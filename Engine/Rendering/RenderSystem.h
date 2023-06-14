@@ -2,6 +2,7 @@
 #pragma once
 #include <d3d11_3.h>
 #include "Prerequisites.h"
+#include "../GameComponents/Shader.h"
 
 
 class RenderSystem
@@ -11,43 +12,38 @@ public:
 	RenderSystem();
 	//Release all the resources loaded
 	~RenderSystem();
+
 public:
 	SwapChainPtr createSwapChain(HWND hwnd, UINT width, UINT height);
-	D3DDrawPtr getImmediateDeviceContext();
-	VertexBufferPtr createVertexBuffer(void* list_vertices, UINT size_vertex, UINT size_list, void*shader_byte_code, UINT size_byte_shader);
+	D3DDrawPtr getD3DDraw();
+	VertexBufferPtr createVertexBuffer(void* list_vertices, UINT size_vertex, UINT size_list);
 	IndexBufferPtr createIndexBuffer(void* list_indices, UINT size_list);
 	ConstantBufferPtr createConstantBuffer(void* buffer, UINT size_buffer);
-	VertexShaderPtr createVertexShader(const void* shader_byte_code, size_t byte_code_size);
-	PixelShaderPtr createPixelShader(const void* shader_byte_code, size_t byte_code_size);
-public:
-	bool compileVertexShader(const wchar_t* file_name, const char* entry_point_name, void** shader_byte_code, size_t* byte_code_size);
-	bool compilePixelShader(const wchar_t* file_name, const char* entry_point_name, void** shader_byte_code, size_t* byte_code_size);
-	void releaseCompiledShader();
+
 	void setRasterizerState(bool cull_front);
-private:
 	void initRasterizerState();
+
 private:
-	D3DDrawPtr m_imm_device_context;
+	D3DDrawPtr m_d3d_draw;
+
 private:
-	ID3D11Device * m_d3d_device;
+	ID3D11Device* m_d3d_device;
 	D3D_FEATURE_LEVEL m_feature_level;
+
 private:
-	IDXGIDevice * m_dxgi_device;
+	IDXGIDevice* m_dxgi_device;
 	IDXGIAdapter* m_dxgi_adapter;
 	IDXGIFactory* m_dxgi_factory;
 	ID3D11DeviceContext* m_imm_context;
 
 private:
-	ID3DBlob * m_blob = nullptr;
+	Shader* m_layout_shader = nullptr;
+	void* m_layout_shader_byte_code = nullptr;
+	size_t m_layout_shader_size = 0;
 
 	ID3D11RasterizerState* m_cull_front_state = nullptr;
 	ID3D11RasterizerState* m_cull_back_state = nullptr;
 
-
-	ID3DBlob* m_vsblob = nullptr;
-	ID3DBlob* m_psblob = nullptr;
-	ID3D11VertexShader* m_vs = nullptr;
-	ID3D11PixelShader* m_ps = nullptr;
 private:
 	friend class SwapChain;
 	friend class VertexBuffer;

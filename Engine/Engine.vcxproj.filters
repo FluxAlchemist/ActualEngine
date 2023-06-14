@@ -36,7 +36,7 @@
     <ClInclude Include="Math\Vector4D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Math\VertexMesh.h">
+    <ClInclude Include="Math\VertexInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rendering\SwapChain.h">
@@ -64,6 +64,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rendering\VertexShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponents\MeshRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponents\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponents\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -98,5 +107,17 @@
     <ClCompile Include="Rendering\VertexShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameComponents\MeshRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameComponents\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameComponents\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Common\VertexLayoutShader.hlsl" />
   </ItemGroup>
 </Project>

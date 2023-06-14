@@ -2,6 +2,10 @@
 #include <d3d11.h>
 #include "Prerequisites.h"
 
+
+/*
+	Also known as DeviceContext
+*/
 class D3DDraw
 {
 public:

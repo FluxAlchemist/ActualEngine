@@ -45,21 +45,23 @@ RenderSystem::RenderSystem()
 		throw std::exception("RenderSystem not created successfully");
 	}
 
-	m_imm_device_context = std::make_shared<D3DDraw>(m_imm_context,this);
+	m_d3d_draw = std::make_shared<D3DDraw>(m_imm_context,this);
 
 	m_d3d_device->QueryInterface(__uuidof(IDXGIDevice), (void**)&m_dxgi_device);
 	m_dxgi_device->GetParent(__uuidof(IDXGIAdapter), (void**)&m_dxgi_adapter);
 	m_dxgi_adapter->GetParent(__uuidof(IDXGIFactory), (void**)&m_dxgi_factory);
+
+	m_layout_shader = new Shader();
+	m_layout_shader->m_filename = L"VertexLayoutShader";
+	m_layout_shader->compileVertexShader();
+	m_layout_shader_byte_code = m_layout_shader->m_blob_vertex->GetBufferPointer();
+	m_layout_shader_size = m_layout_shader->m_blob_vertex->GetBufferSize();
 
 	initRasterizerState();
 }
 
 RenderSystem::~RenderSystem()
 {
-
-	if (m_vsblob)m_vsblob->Release();
-	if (m_psblob)m_psblob->Release();
-
 	m_dxgi_device->Release();
 	m_dxgi_adapter->Release();
 	m_dxgi_factory->Release();
@@ -81,18 +83,18 @@ SwapChainPtr RenderSystem::createSwapChain(HWND hwnd, UINT width, UINT height)
 }
 
 
-D3DDrawPtr RenderSystem::getImmediateDeviceContext()
+D3DDrawPtr RenderSystem::getD3DDraw()
 {
-	return this->m_imm_device_context;
+	return this->m_d3d_draw;
 }
 
-VertexBufferPtr RenderSystem::createVertexBuffer(void* list_vertices, UINT size_vertex, UINT size_list, void*shader_byte_code, UINT size_byte_shader)
+VertexBufferPtr RenderSystem::createVertexBuffer(void* list_vertices, UINT size_vertex, UINT size_list)
 {
 	
 	VertexBufferPtr vb = nullptr;
 	try
 	{
-		vb = std::make_shared<VertexBuffer>(list_vertices, size_vertex, size_list, shader_byte_code, size_byte_shader, this);
+		vb = std::make_shared<VertexBuffer>(list_vertices, size_vertex, size_list, m_layout_shader_byte_code, m_layout_shader_size, this);
 	}
 	catch (...) {}
 	return vb;
@@ -118,63 +120,6 @@ ConstantBufferPtr RenderSystem::createConstantBuffer(void* buffer, UINT size_buf
 	}
 	catch (...) {}
 	return cb;
-}
-
-VertexShaderPtr RenderSystem::createVertexShader(const void * shader_byte_code, size_t byte_code_size)
-{
-	VertexShaderPtr vs = nullptr;
-	try
-	{
-		vs = std::make_shared<VertexShader>(shader_byte_code, byte_code_size, this);
-	}
-	catch (...) {}
-	return vs;
-}
-
-PixelShaderPtr RenderSystem::createPixelShader(const void * shader_byte_code, size_t byte_code_size)
-{
-	PixelShaderPtr ps = nullptr;
-	try
-	{
-		ps = std::make_shared<PixelShader>(shader_byte_code, byte_code_size, this);
-	}
-	catch (...) {}
-	return ps;
-}
-
-bool RenderSystem::compileVertexShader(const wchar_t* file_name, const char* entry_point_name, void** shader_byte_code, size_t* byte_code_size)
-{
-	ID3DBlob* error_blob = nullptr;
-	if (!SUCCEEDED(D3DCompileFromFile(file_name, nullptr, nullptr, entry_point_name, "vs_5_0", 0, 0, &m_blob, &error_blob)))
-	{
-		if (error_blob) error_blob->Release();
-		return false;
-	}
-
-	*shader_byte_code = m_blob->GetBufferPointer();
-	*byte_code_size = m_blob->GetBufferSize();
-
-	return true;
-}
-
-bool RenderSystem::compilePixelShader(const wchar_t * file_name, const char * entry_point_name, void ** shader_byte_code, size_t * byte_code_size)
-{
-	ID3DBlob* error_blob = nullptr;
-	if (!SUCCEEDED(D3DCompileFromFile(file_name, nullptr, nullptr, entry_point_name, "ps_5_0", 0, 0, &m_blob, &error_blob)))
-	{
-		if (error_blob) error_blob->Release();
-		return false;
-	}
-
-	*shader_byte_code = m_blob->GetBufferPointer();
-	*byte_code_size = m_blob->GetBufferSize();
-
-	return true;
-}
-
-void RenderSystem::releaseCompiledShader()
-{
-	if (m_blob)m_blob->Release();
 }
 
 void RenderSystem::setRasterizerState(bool cull_front)

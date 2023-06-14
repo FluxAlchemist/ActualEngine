@@ -7,10 +7,10 @@ public:
 	//Entry
 	Window();
 
-	//Broadcast
-	bool broadcast();
-
 	bool running();
+
+    RECT getClientWindowRect();
+	RECT getScreenSize();
 
 	//Events
 	virtual void onCreate();
@@ -23,8 +23,12 @@ public:
 	//Release
 	~Window();
 
+private:
+	//Broadcast
+	bool broadcast();
+
 protected:
-	HWND			m_hwnd;
+	HWND m_hwnd;
 	bool m_running;
 };
 
