@@ -34,6 +34,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Resources\TestShader.hlsl" />
+    <Text Include="Resources\TestShader.hlsl" />
   </ItemGroup>
 </Project>

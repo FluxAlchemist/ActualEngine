@@ -4,7 +4,7 @@
 class Window
 {
 public:
-	//Entry
+	// Entry
 	Window();
 
 	bool running();
@@ -12,7 +12,7 @@ public:
     RECT getClientWindowRect();
 	RECT getScreenSize();
 
-	//Events
+	// Events
 	virtual void onCreate();
 	virtual void onUpdate();
 	virtual void onDestroy();
@@ -20,11 +20,10 @@ public:
 	virtual void onKillFocus();
 	virtual void onSize();
 
-	//Release
+	// Release
 	~Window();
 
-private:
-	//Broadcast
+	// Broadcast
 	bool broadcast();
 
 protected:

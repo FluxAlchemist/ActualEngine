@@ -118,6 +118,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Common\VertexLayoutShader.hlsl" />
+    <Text Include="Common\VertexLayoutShader.hlsl" />
   </ItemGroup>
 </Project>
