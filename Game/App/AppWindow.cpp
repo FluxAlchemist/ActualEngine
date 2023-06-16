@@ -21,7 +21,7 @@ AppWindow::AppWindow()
 {
 	//TODO: move
 	m_render_system = new RenderSystem();
-	m_shader = new Shader();
+	m_shader = new ShaderOld();
 	m_shader->m_filename = L"TestShader.hlsl";
 }
 
@@ -169,7 +169,7 @@ void AppWindow::onCreate()
 
 	m_world_cam.setTranslation(Vector3D(0, 0, -1));
 
-	Shader* shader = new Shader(L"TestShader.hlsl");
+	ShaderOld* shader = new ShaderOld(L"TestShader.hlsl");
 	shader->compilePixelShader();
 	shader->compileVertexShader();
 

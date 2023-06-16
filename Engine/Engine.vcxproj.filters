@@ -72,7 +72,7 @@
     <ClInclude Include="GameComponents\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameComponents\Shader.h">
+    <ClInclude Include="GameComponents\ShaderOld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,7 +113,7 @@
     <ClCompile Include="GameComponents\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameComponents\Shader.cpp">
+    <ClCompile Include="GameComponents\ShaderOld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

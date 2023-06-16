@@ -159,7 +159,7 @@
     <ClInclude Include="Rendering\SwapChain.h" />
     <ClInclude Include="Rendering\VertexBuffer.h" />
     <ClInclude Include="Rendering\VertexShader.h" />
-    <ClInclude Include="GameComponents\Shader.h" />
+    <ClInclude Include="GameComponents\ShaderOld.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameComponents\MeshRenderer.cpp" />
@@ -179,7 +179,7 @@
     <ClCompile Include="Rendering\SwapChain.cpp" />
     <ClCompile Include="Rendering\VertexBuffer.cpp" />
     <ClCompile Include="Rendering\VertexShader.cpp" />
-    <ClCompile Include="GameComponents\Shader.cpp" />
+    <ClCompile Include="GameComponents\ShaderOld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Common\VertexLayoutShader.hlsl">

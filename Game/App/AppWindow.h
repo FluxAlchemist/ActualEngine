@@ -46,7 +46,7 @@ private:
 	VertexBufferPtr m_vertex_buffer;
 	IndexBufferPtr m_index_buffer;
 	//temp af:
-	Shader* m_shader;
+	ShaderOld* m_shader;
 	VertexShaderPtr m_vs;
 	PixelShaderPtr m_ps;
 

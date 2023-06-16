@@ -2,7 +2,7 @@
 #pragma once
 #include <d3d11_3.h>
 #include "Prerequisites.h"
-#include "../GameComponents/Shader.h"
+#include "../GameComponents/ShaderOld.h"
 
 
 class RenderSystem
@@ -37,7 +37,7 @@ private:
 	ID3D11DeviceContext* m_imm_context;
 
 private:
-	Shader* m_layout_shader = nullptr;
+	ShaderOld* m_layout_shader = nullptr;
 	void* m_layout_shader_byte_code = nullptr;
 	size_t m_layout_shader_size = 0;
 

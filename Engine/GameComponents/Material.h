@@ -2,7 +2,7 @@
 
 
 #pragma once
-#include "Shader.h"
+#include "ShaderOld.h"
 #include <list>
 
 
@@ -13,7 +13,7 @@ public:
 	~Material();
 
 private:
-	Shader shader;
+	ShaderOld shader;
 	//TODO: add textures for shader
 };
 

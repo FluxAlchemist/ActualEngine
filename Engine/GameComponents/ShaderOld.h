@@ -1,12 +1,16 @@
 #pragma once
+#include <d3dcompiler.h>
+#include "../Rendering/VertexShader.h"
+#include "../Rendering/PixelShader.h"
+#include "../Rendering/Prerequisites.h"
 
-class Shader
+class ShaderOld
 {
 public:
-	Shader();
-	Shader(const wchar_t* filename);
+	ShaderOld();
+	ShaderOld(const wchar_t* filename);
 
-	~Shader();
+	~ShaderOld();
 
 private:
 	bool compileVertexShader(void** shader_byte_code, size_t* byte_code_size);

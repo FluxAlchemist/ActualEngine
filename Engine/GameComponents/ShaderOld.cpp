@@ -1,26 +1,25 @@
-#include "Shader.h"
+#include "ShaderOld.h"
 #include <d3dcompiler.h>
-#include "../Rendering/Prerequisites.h"
 
 #define SHADER_ENTRY_VERTEX "vsmain"
 #define SHADER_ENTRY_PIXEL "psmain"
 
-Shader::Shader()
+ShaderOld::ShaderOld()
 {
 }
 
-Shader::Shader(const wchar_t* filename)
+ShaderOld::ShaderOld(const wchar_t* filename)
 {
 	m_filename = filename;
 }
 
-Shader::~Shader()
+ShaderOld::~ShaderOld()
 {
 	if (m_blob_pixel) m_blob_pixel->Release();
 	if (m_blob_vertex) m_blob_pixel->Release();
 }
 
-bool Shader::compileVertexShader(void** shader_byte_code, size_t* byte_code_size)
+bool ShaderOld::compileVertexShader(void** shader_byte_code, size_t* byte_code_size)
 {
 	if (!compileVertexShader())
 		return false;
@@ -31,7 +30,7 @@ bool Shader::compileVertexShader(void** shader_byte_code, size_t* byte_code_size
 	return true;
 }
 
-bool Shader::compilePixelShader(void** shader_byte_code, size_t* byte_code_size)
+bool ShaderOld::compilePixelShader(void** shader_byte_code, size_t* byte_code_size)
 {
 	if (!compilePixelShader())
 		return false;
@@ -42,7 +41,7 @@ bool Shader::compilePixelShader(void** shader_byte_code, size_t* byte_code_size)
 	return true;
 }
 
-bool Shader::compileVertexShader()
+bool ShaderOld::compileVertexShader()
 {
 	ID3DBlob* error_blob = nullptr;
 	if (!SUCCEEDED(D3DCompileFromFile(m_filename, nullptr, nullptr, SHADER_ENTRY_VERTEX, "vs_5_0", 0, 0, &m_blob_vertex, &error_blob)))
@@ -54,7 +53,7 @@ bool Shader::compileVertexShader()
 	return true;
 }
 
-bool Shader::compilePixelShader()
+bool ShaderOld::compilePixelShader()
 {
 	ID3DBlob* error_blob = nullptr;
 	if (!SUCCEEDED(D3DCompileFromFile(m_filename, nullptr, nullptr, SHADER_ENTRY_PIXEL, "vs_5_0", 0, 0, &m_blob_pixel, &error_blob)))
@@ -66,7 +65,7 @@ bool Shader::compilePixelShader()
 	return true;
 }
 
-VertexShaderPtr Shader::createVertexShader(RenderSystem* renderSystem)
+VertexShaderPtr ShaderOld::createVertexShader(RenderSystem* renderSystem)
 {
 	VertexShaderPtr vs = nullptr;
 	try
@@ -81,7 +80,7 @@ VertexShaderPtr Shader::createVertexShader(RenderSystem* renderSystem)
 	return vs;
 }
 
-PixelShaderPtr Shader::createPixelShader(RenderSystem* renderSystem)
+PixelShaderPtr ShaderOld::createPixelShader(RenderSystem* renderSystem)
 {
 	PixelShaderPtr ps = nullptr;
 	try
