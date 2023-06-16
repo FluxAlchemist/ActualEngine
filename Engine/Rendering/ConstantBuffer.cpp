@@ -1,6 +1,4 @@
 
-#include "../pch.h"
-
 #include "ConstantBuffer.h"
 #include "D3DDraw.h"
 #include "RenderSystem.h"

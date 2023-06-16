@@ -1,7 +1,5 @@
 
 
-#include "../pch.h"
-
 #include "IndexBuffer.h"
 #include "RenderSystem.h"
 #include <exception>

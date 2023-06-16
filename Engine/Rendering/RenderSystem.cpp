@@ -1,6 +1,3 @@
-
-#include "../pch.h"
-
 #include "RenderSystem.h"
 #include "SwapChain.h"
 #include "D3DDraw.h"

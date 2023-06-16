@@ -1,10 +1,13 @@
 #pragma once
+
+
 #include <d3dcompiler.h>
+#include "../Main.h"
 #include "../Rendering/VertexShader.h"
 #include "../Rendering/PixelShader.h"
 #include "../Rendering/Prerequisites.h"
 
-class ShaderOld
+class DllExport ShaderOld
 {
 public:
 	ShaderOld();

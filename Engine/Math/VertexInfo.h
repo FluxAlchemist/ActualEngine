@@ -1,9 +1,10 @@
-
 #pragma once
+
+#include "../Main.h"
 #include "Vector3D.h"
 #include "Vector2D.h"
 
-class VertexInfo
+class DllExport VertexInfo
 {
 public:
 	/*

@@ -1,9 +1,11 @@
-
 #pragma once
+
+
 #include <d3d11_3.h>
+#include "../Main.h"
 #include "Prerequisites.h"
 
-class VertexBuffer
+class DllExport VertexBuffer
 {
 public:
 	VertexBuffer(void* list_vertices, UINT size_vertex, UINT size_list, void*shader_byte_code, size_t size_byte_shader,

@@ -1,6 +1,4 @@
 
-#include "../pch.h"
-
 #include "D3DDraw.h"
 #include "SwapChain.h"
 #include "VertexBuffer.h"

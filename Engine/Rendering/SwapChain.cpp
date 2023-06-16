@@ -1,6 +1,4 @@
 
-#include "../pch.h"
-
 #include "SwapChain.h"
 #include "RenderSystem.h"
 #include <exception>

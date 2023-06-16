@@ -1,9 +1,11 @@
-
 #pragma once
+
+
 #include <d3d11_3.h>
+#include "../Main.h"
 #include "Prerequisites.h"
 
-class ConstantBuffer
+class DllExport ConstantBuffer
 {
 public:
 	ConstantBuffer(void* buffer, UINT size_buffer, RenderSystem* system);

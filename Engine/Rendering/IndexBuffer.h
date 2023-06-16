@@ -1,9 +1,11 @@
-
 #pragma once
+
+
 #include <d3d11_3.h>
+#include "../Main.h"
 #include "Prerequisites.h"
 
-class IndexBuffer
+class DllExport IndexBuffer
 {
 public:
 	IndexBuffer(void* list_indices, UINT size_list,RenderSystem * system);

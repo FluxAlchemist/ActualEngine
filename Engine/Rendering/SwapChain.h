@@ -1,9 +1,10 @@
-
 #pragma once
+
 #include <d3d11_3.h>
+#include "../Main.h"
 #include "Prerequisites.h"
 
-class SwapChain
+class DllExport SwapChain
 {
 public:
 	//Initialize SwapChain for a window

@@ -1,12 +1,11 @@
-
-
-
 #pragma once
-#include "ShaderOld.h"
+
 #include <list>
+#include "../Main.h"
+#include "ShaderOld.h"
 
 
-class Material
+class DllExport Material
 {
 public:
 	Material();

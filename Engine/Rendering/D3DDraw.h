@@ -1,12 +1,15 @@
 #pragma once
+
+
 #include <d3d11.h>
+#include "../Main.h"
 #include "Prerequisites.h"
 
 
 /*
 	Also known as DeviceContext
 */
-class D3DDraw
+class DllExport D3DDraw
 {
 public:
 	D3DDraw(ID3D11DeviceContext* device_context, RenderSystem* system);

@@ -1,7 +1,8 @@
-
 #pragma once
 
-class Vector2D
+#include "../Main.h"
+
+class DllExport Vector2D
 {
 public:
 	Vector2D() :m_x(0), m_y(0)

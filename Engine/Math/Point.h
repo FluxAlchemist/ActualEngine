@@ -1,10 +1,9 @@
-
-
 #pragma once
 
+#include "../Main.h"
 
 
-class Point
+class DllExport Point
 {
 public:
 	Point() :m_x(0), m_y(0)

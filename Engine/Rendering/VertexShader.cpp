@@ -1,7 +1,5 @@
 
 
-#include "../pch.h"
-
 #include "VertexShader.h"
 #include "RenderSystem.h"
 #include <exception>

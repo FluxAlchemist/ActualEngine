@@ -1,8 +1,9 @@
-
 #pragma once
+
+#include "../Main.h"
 #include "Vector3D.h"
 
-class Vector4D
+class DllExport Vector4D
 {
 public:
 	Vector4D() :m_x(0), m_y(0), m_z(0),m_w(0)

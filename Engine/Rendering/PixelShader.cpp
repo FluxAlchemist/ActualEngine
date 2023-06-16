@@ -1,8 +1,5 @@
 
 
-
-#include "../pch.h"
-
 #include "PixelShader.h"
 #include "RenderSystem.h"
 #include <exception>

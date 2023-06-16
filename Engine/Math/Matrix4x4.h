@@ -1,11 +1,11 @@
-
-
 #pragma once
+
 #include <memory>
+#include "../Main.h"
 #include "Vector3D.h"
 #include "Vector4D.h"
 
-class Matrix4x4
+class DllExport Matrix4x4
 {
 public:
 	Matrix4x4()

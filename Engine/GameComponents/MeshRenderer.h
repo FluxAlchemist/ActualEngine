@@ -1,10 +1,11 @@
-
-
 #pragma once
+
+
+#include "../Main.h"
 #include "Material.h"
 
 
-class MeshRenderer
+class DllExport MeshRenderer
 {
 public:
 	MeshRenderer();

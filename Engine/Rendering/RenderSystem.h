@@ -1,11 +1,13 @@
-
 #pragma once
+
+
 #include <d3d11_3.h>
+#include "../Main.h"
 #include "Prerequisites.h"
 #include "../GameComponents/ShaderOld.h"
 
 
-class RenderSystem
+class DllExport RenderSystem
 {
 public:
 	//Initialize the GraphicsEngine and DirectX 11 Device
