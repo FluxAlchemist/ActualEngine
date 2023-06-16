@@ -49,7 +49,7 @@ RenderSystem::RenderSystem()
 	m_dxgi_adapter->GetParent(__uuidof(IDXGIFactory), (void**)&m_dxgi_factory);
 
 	m_layout_shader = new ShaderOld();
-	m_layout_shader->m_filename = L"VertexLayoutShader";
+	m_layout_shader->m_filename = L"VertexLayoutShader.hlsl";
 	m_layout_shader->compileVertexShader();
 	m_layout_shader_byte_code = m_layout_shader->m_blob_vertex->GetBufferPointer();
 	m_layout_shader_size = m_layout_shader->m_blob_vertex->GetBufferSize();

@@ -35,7 +35,7 @@ public:
 
 	~D3DDraw();
 private:
-	ID3D11DeviceContext* m_device_context;
+	ID3D11DeviceContext* m_device_context = nullptr;
 	RenderSystem* m_system = nullptr;
 private:
 	friend class ConstantBuffer;

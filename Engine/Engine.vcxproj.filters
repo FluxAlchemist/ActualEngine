@@ -109,6 +109,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Common\VertexLayoutShader.hlsl" />
+    <None Include="Common\VertexLayoutShader.hlsl" />
   </ItemGroup>
 </Project>

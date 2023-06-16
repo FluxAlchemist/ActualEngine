@@ -35,5 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\TestShader.hlsl" />
+    <Text Include="VertexLayoutShader.hlsl" />
   </ItemGroup>
 </Project>

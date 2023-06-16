@@ -1,5 +1,7 @@
 #include "ShaderOld.h"
 #include <d3dcompiler.h>
+#include <system_error>
+#include <iostream>
 
 #define SHADER_ENTRY_VERTEX "vsmain"
 #define SHADER_ENTRY_PIXEL "psmain"
@@ -44,8 +46,14 @@ bool ShaderOld::compilePixelShader(void** shader_byte_code, size_t* byte_code_si
 bool ShaderOld::compileVertexShader()
 {
 	ID3DBlob* error_blob = nullptr;
-	if (!SUCCEEDED(D3DCompileFromFile(m_filename, nullptr, nullptr, SHADER_ENTRY_VERTEX, "vs_5_0", 0, 0, &m_blob_vertex, &error_blob)))
+	HRESULT hr = D3DCompileFromFile(m_filename, nullptr, nullptr, SHADER_ENTRY_VERTEX, "vs_5_0", 0, 0, &m_blob_vertex, &error_blob);
+	if (!SUCCEEDED(hr))
 	{
+		std::cout << std::system_category().message(hr);
+		TCHAR buffer[MAX_PATH] = { 0 };
+		GetModuleFileName(NULL, buffer, MAX_PATH);
+		std::wstring::size_type pos = std::wstring(buffer).find_last_of(L"\\/");
+		std::cout << pos;
 		if (error_blob) error_blob->Release();
 		return false;
 	}
@@ -56,8 +64,10 @@ bool ShaderOld::compileVertexShader()
 bool ShaderOld::compilePixelShader()
 {
 	ID3DBlob* error_blob = nullptr;
-	if (!SUCCEEDED(D3DCompileFromFile(m_filename, nullptr, nullptr, SHADER_ENTRY_PIXEL, "vs_5_0", 0, 0, &m_blob_pixel, &error_blob)))
+	HRESULT hr = D3DCompileFromFile(m_filename, nullptr, nullptr, SHADER_ENTRY_PIXEL, "ps_5_0", 0, 0, &m_blob_pixel, &error_blob);
+	if (!SUCCEEDED(hr))
 	{
+		std::cout << std::system_category().message(hr);
 		if (error_blob) error_blob->Release();
 		return false;
 	}
