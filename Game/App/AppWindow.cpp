@@ -10,7 +10,7 @@ struct constant
 	Matrix4x4 m_view;
 	Matrix4x4 m_proj;
 	Vector4D m_light_direction;
-	Vector4D m_camera_position = Vector4D(0.3, 0.3, 4, 0);
+	Vector4D m_camera_position = Vector4D(0, 0, 4, 0);
 	Vector4D m_light_position = Vector4D(0, 1, 0, 0);
 	float m_light_radius = 4.0f;
 	float m_time = 0.0f;
@@ -40,6 +40,7 @@ void AppWindow::render()
 	update();
 
 	//Render a thing
+	m_render_system->setRasterizerState(false);
 	drawSomething(m_vs, m_ps, m_cb);
 
 	m_swap_chain->present(true);
@@ -67,6 +68,7 @@ void AppWindow::updateCamera()
 	world_cam *= temp;
 
 	temp.setIdentity();
+	m_rot_y = sinf(m_time);
 	temp.setRotationY(m_rot_y);
 	world_cam *= temp;
 
@@ -154,6 +156,8 @@ void AppWindow::drawSomething(const VertexShaderPtr& vs, const PixelShaderPtr& p
 	m_index_buffer = m_render_system->createIndexBuffer(&indices,
 		(UINT)indices.size());
 	m_render_system->getD3DDraw()->setIndexBuffer(m_index_buffer);
+
+	m_render_system->getD3DDraw()->drawIndexedTriangleList(m_index_buffer->getSizeIndexList(), 0, 0);
 }
 
 // overriden:
@@ -169,7 +173,7 @@ void AppWindow::onCreate()
 
 	m_world_cam.setTranslation(Vector3D(0, 0, -1));
 
-	ShaderOld* shader = new ShaderOld(L"TestShader.hlsl");
+	ShaderOld* shader = new ShaderOld(L".//Resources//TestShader.hlsl");
 	shader->compilePixelShader();
 	shader->compileVertexShader();
 

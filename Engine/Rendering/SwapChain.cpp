@@ -3,7 +3,8 @@
 #include "RenderSystem.h"
 #include <exception>
 
-SwapChain::SwapChain(HWND hwnd, UINT width, UINT height,RenderSystem * system) : m_system(system)
+SwapChain::SwapChain(HWND hwnd, UINT width, UINT height,RenderSystem * system) : 
+	m_system(system)
 {
 	ID3D11Device*device= m_system->m_d3d_device;
 

@@ -9,7 +9,8 @@
 //#include "Texture.h"
 #include <exception>
 
-D3DDraw::D3DDraw(ID3D11DeviceContext* device_context, RenderSystem* system)
+D3DDraw::D3DDraw(ID3D11DeviceContext* device_context, RenderSystem* system) : 
+	m_system(system), m_device_context(device_context)
 {
 }
 

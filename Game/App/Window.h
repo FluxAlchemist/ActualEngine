@@ -29,5 +29,6 @@ public:
 protected:
 	HWND m_hwnd;
 	bool m_running;
+	bool m_init_complete = false;
 };
 

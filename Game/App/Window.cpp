@@ -90,13 +90,21 @@ bool Window::broadcast()
 {
 	MSG msg;
 
+
+	if (!this->m_init_complete)
+	{
+		SetWindowLongPtr(m_hwnd, GWLP_USERDATA, (LONG_PTR)this);
+		this->onCreate();
+		this->m_init_complete = true;
+	}
+
+	this->onUpdate();
+
 	while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) > 0)
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
-
-	this->onUpdate();
 
 	//TODO: ?
 	Sleep(1);
